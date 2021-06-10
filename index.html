@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<style>
+    *{
+        padding:0px;
+        margin: 0px;
+        font-family: 'Lalezar', cursive;
+    }
+    .container{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex-direction: column;
+        
+        height:100vh;
+        width:100vw;
+    }
+    #meal{
+        font-size:50px;
+        margin:20px;
+    }
+    h1{
+        position:absolute;
+        top:0px;
+        padding:10px;
+    } 
+    button{
+        padding:5px 20px;
+        font-size:30px;
+        border:none;
+        border-radius: 20px;
+        background-color:aquamarine;
+        transition:0.3s ease;
+    }
+    button:hover{
+        background-color:rgb(65, 167, 133);
+    }
+    #notes{
+        position:absolute;
+        bottom:20px;
+    }
+</style>
+
+<div class="container">
+    <h1>وش ناكل ؟</h1>
+    <span id='meal' ></span>
+    <button onClick='suggest()'> غيرة</button>
+    <span id='notes'></span>
+</div>
+
+<script>
+
+let meal = document.getElementById('meal')
+let limit = 0
+
+function suggest(){
+
+    let list = ["تكه على الفحم",
+    "دجاج مشوي",
+    "شاورما على كيف كيفك"
+]
+    let emoji = ["🤩" , "😏" , "😁" , "😍" , "😎"]
+    let random_item =  list[ Math.floor(  Math.random() *  list.length ) ] 
+    let random_emoji = emoji[    Math.floor(  Math.random() *  emoji.length )  ]
+
+    limit++
+
+    if ( limit > 1 ) {
+        document.querySelector('#notes').innerHTML = '🤓ما يعجبكم شي'
+    }
+    else{
+        document.querySelector('#notes').innerHTML = ''
+    }
+
+    meal.innerHTML =  random_emoji + random_item 
+
+} 
+suggest()
+</script>
+</body>
+</html>
