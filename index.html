@@ -63,9 +63,9 @@
 let meal = document.getElementById('meal')
 let limit = 0
 let list
+
 let emoji = ["🤩","😏","😁","😍","😎","😬","😉","🥰","🤤"]
-let random_item =  list[ Math.floor(  Math.random() *  list.length ) ] 
-let random_emoji = emoji[    Math.floor(  Math.random() *  emoji.length )  ]
+
 
 
 async function g(){
@@ -75,25 +75,24 @@ async function g(){
     let list_ = await f_.text()
     list = list_.split(/\r?\n/);
     list.pop()
-    meal.innerHTML = list[random_item]
+    meal.innerHTML = emoji[Math.floor(Math.random()*emoji.length)] + list[ Math.floor(Math.random() * await  list.length) ]
     console.log(list)
 }
 g()
 async function suggest(){
-
+    let emoji = ["🤩","😏","😁","😍","😎","😬","😉","🥰","🤤"]
+    let random_item =  list[ Math.floor(  Math.random() *  list.length ) ] 
+    let random_emoji = emoji[    Math.floor(  Math.random() *  emoji.length )  ]
     limit++
-
     if ( limit > 10 ) {
         document.querySelector('#notes').innerHTML = '🤓خلاص عاد ما يعجبكم شي'
     }
     else{
         document.querySelector('#notes').innerHTML = ''
     }
-
     meal.innerHTML =  random_emoji + random_item 
 }
 
-suggest()
 </script>
 </body>
 </html>
